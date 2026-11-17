@@ -17,7 +17,8 @@
   },
   "coder": {
     "branch_prefix": "feat/issue-",
-    "local_test_cmd": "npm test && npm run build"
+    "local_test_cmd": "npm test && npm run build",
+    "lock_ttl_minutes": 45
   },
   "deploy": {
     "workflow_file": ""
