@@ -1,0 +1,33 @@
+{
+  "github": {
+    "owner": "your-github-owner",
+    "repo": "your-repo-name",
+    "project_owner": "your-project-owner",
+    "project_number": 1
+  },
+  "branch": "development",
+  "columns": {
+    "backlog": "Backlog",
+    "todo": "ToDo",
+    "in_progress": "InProgress",
+    "deploy": "Deploy",
+    "qa": "QA",
+    "waiting_user": "Waiting User Confirmation",
+    "done": "Done"
+  },
+  "coder": {
+    "branch_prefix": "feat/issue-",
+    "local_test_cmd": "npm test && npm run build"
+  },
+  "deploy": {
+    "workflow_file": ""
+  },
+  "qa": {
+    "target_url": "http://localhost:4173",
+    "preview_cmd": "npm run preview -- --port 4173",
+    "test_cmd": "",
+    "max_retries": 3,
+    "auth_env_file": ".env.qa",
+    "needs_human_label": "needs-human"
+  }
+}

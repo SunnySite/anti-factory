@@ -1,0 +1,33 @@
+name: Deploy Development
+
+on:
+  push:
+    branches:
+      - development
+
+concurrency:
+  group: deploy-development
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Deploy to server via SSH
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.DEPLOY_HOST }}
+          username: ${{ secrets.DEPLOY_USER }}
+          key: ${{ secrets.DEPLOY_SSH_KEY }}
+          port: ${{ secrets.DEPLOY_PORT || 22 }}
+          script: |
+            cd ${{ secrets.DEPLOY_PATH }}
+            git fetch origin development
+            git checkout development
+            git pull origin development
+            # Customize build/restart commands below for your stack:
+            # npm ci && npm run build
+            # pm2 reload all || docker compose up -d --build
