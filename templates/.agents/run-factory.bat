@@ -6,6 +6,14 @@ cd /d "%~dp0.."
 
 set "INTERVAL_SECONDS=300"
 
+set "AGY_BIN=agy"
+where agy >nul 2>&1
+if errorlevel 1 (
+    if exist "%LOCALAPPDATA%\agy\bin\agy.exe" (
+        set "AGY_BIN=%LOCALAPPDATA%\agy\bin\agy.exe"
+    )
+)
+
 if "%~1"=="--once" (
     call :run_poll
     exit /b %ERRORLEVEL%
@@ -26,7 +34,7 @@ goto :loop
 
 :run_poll
 echo [%DATE% %TIME%] Menjalankan factory-watcher...
-agy -p "Run the factory-watcher skill against .agents/factory.config.json." --dangerously-skip-permissions
+"%AGY_BIN%" -p "Run the factory-watcher skill against .agents/factory.config.json." --dangerously-skip-permissions
 set "EXIT_CODE=%ERRORLEVEL%"
 echo [%DATE% %TIME%] Selesai (exit code: %EXIT_CODE%).
 exit /b %EXIT_CODE%
