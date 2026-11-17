@@ -1,0 +1,31 @@
+name: Bug Report
+description: Report a bug or unexpected behavior in Anti-Factory
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe the bug
+      description: A clear and concise description of what happened.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      description: Steps to reproduce the behavior (command, skill, or script used).
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: OS (Windows/macOS/Linux), gh CLI version, Antigravity version.
+      placeholder: "Windows 11, gh 2.x, agy ..."
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant logs
+      description: Paste any error output (redact tokens/secrets).
+      render: shell
