@@ -16,12 +16,23 @@ Before using `anti-factory` in a project, make sure you have:
    - Antigravity IDE / CLI installed and signed in (`agy` available in `PATH` if using the headless runner scripts).
 2. **Git & GitHub Repository**:
    - A target repository on GitHub with `origin` configured and your target branch created (default: `development`).
-3. **GitHub CLI (`gh`)**:
-   - Installed and authenticated with scopes `repo`, `project`, and `workflow`:
-     ```bash
-     gh auth login
-     gh auth refresh -s repo,project,workflow
-     ```
+3. **GitHub CLI (`gh`) & Required Permissions**:
+   - Install `gh` (e.g. `winget install --id GitHub.cli` on Windows, `brew install gh` on macOS) and authenticate using **either**:
+     - **Option A — Web OAuth (recommended)** with `repo`, `workflow`, and `project` scopes:
+       ```bash
+       gh auth login --scopes "repo,workflow,project"
+       # Or if already logged in:
+       gh auth refresh -s repo,workflow,project
+       ```
+     - **Option B — Fine-grained Personal Access Token (PAT)** (`gh auth login --with-token`):
+       - **Repository permissions**:
+         - `Actions`: `Read-only` *(or `Read and write` to rerun/trigger workflows)*
+         - `Contents`: `Read and write`
+         - `Issues`: `Read and write`
+         - `Metadata`: `Read-only`
+         - *(Optional)* `Workflows`: `Read and write` *(if modifying `.github/workflows/`)*
+       - **Organization / Account permissions** *(whichever owns the GitHub Project v2)*:
+         - `Projects`: `Read and write`
 4. **OS & Project Runtime**:
    - **Windows**: PowerShell (for `setup-project.ps1`) and Command Prompt (for `run-factory.bat`).
    - **Linux / macOS**: `bash` and `python3` (for `setup-project.sh` and `run-factory.sh`).
