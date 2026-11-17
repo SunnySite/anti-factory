@@ -44,7 +44,9 @@ You are the **Watcher & Dispatcher** for the headless Software Factory. Run this
 - Invoke/follow the `factory-qa` skill for that item. Stop after handling it.
 
 ### Case C: `InProgress` has an item
-- A coding task is already in progress. Do **not** pick another item from `ToDo`. Stop.
+- Check `.agents/.factory.lock` in the workspace:
+  - If `.agents/.factory.lock` exists and its `started_at` timestamp is younger than `coder.lock_ttl_minutes` (default `45` minutes): a coding task is actively running. Do **not** pick or dispatch any item. Stop.
+  - If `.agents/.factory.lock` does **not** exist, or its `started_at` timestamp is older than `coder.lock_ttl_minutes` (stale lock from an interrupted run): **resume** the interrupted task by invoking/following `factory-coder` for the `InProgress` item. Stop after dispatching.
 
 ### Case D: `InProgress`, `Deploy`, and `QA` are ALL empty (0 items)
 1. Check `ToDo`. If empty, stop (factory is idle).

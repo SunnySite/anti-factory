@@ -1,3 +1,7 @@
+# Factory runtime lock
+.factory.lock
+.agents/.factory.lock
+
 # Secrets & environment files
 .env
 .env.*
