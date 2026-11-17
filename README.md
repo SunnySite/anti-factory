@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/logo.jpg" alt="Anti-Factory Logo" width="520" />
+  <img src="assets/logo.png" alt="Anti-Factory Logo" width="520" />
 </p>
 
 # Anti-Factory (Headless Software Factory for Antigravity)
