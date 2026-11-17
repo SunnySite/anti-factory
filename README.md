@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/logo.jpg" alt="Anti-Factory Logo" width="520" />
+</p>
+
 # Anti-Factory (Headless Software Factory for Antigravity)
 
 A portable **Headless Software Factory** powered by **Antigravity (`agy`)**, **GitHub Projects v2**, **GitHub Issues**, and the **`gh` CLI**.
@@ -46,6 +50,8 @@ Backlog ──(Human)──▶ ToDo ──(Coder)──▶ InProgress ──(Cod
 ├── .gitignore
 ├── LICENSE
 ├── README.md
+├── assets/
+│   └── logo.jpg
 └── templates/
     ├── .agents/
     │   ├── factory.config.json       # Per-project factory configuration
